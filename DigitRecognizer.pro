@@ -26,3 +26,12 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+HEADERS += \
+    Headers/Connection.h \
+    Headers/Extensions.h \
+    Headers/Functions.h \
+    Headers/Layer.h \
+    Headers/Network.h \
+    Headers/NetworkTopology.h \
+    Headers/Neuron.h
