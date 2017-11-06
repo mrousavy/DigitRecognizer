@@ -26,6 +26,27 @@ ApplicationWindow {
         }
     }
 
+    // Header
+    header: ToolBar {
+        RowLayout {
+            anchors.fill: parent
+            ToolButton {
+                text: qsTr("?")
+                onClicked: Qt.openUrlExternally("http://github.com/mrousavy/BrabeNetz")
+            }
+            Label {
+                text: "BrabeNetz - Digit Recognizer on state.nn: {784,500,100,10}"
+                elide: Label.ElideRight
+                horizontalAlignment: Qt.AlignHCenter
+                verticalAlignment: Qt.AlignVCenter
+                Layout.fillWidth: true
+            }
+            ToolButton {
+                text: qsTr("⋮")
+                onClicked: fileDialog.open()
+            }
+        }
+    }
 
     Canvas {
         id: canvas
