@@ -9,6 +9,8 @@ ApplicationWindow {
     title: qsTr("BrabeNetz - Digit Recognizer")
 
     footer: Label {
-        text: qsTr("Test")
+        text: qsTr("state.nn: {784,500,100,10}")
+        anchors.bottom: parent
+        anchors.centerIn: parent
     }
 }
