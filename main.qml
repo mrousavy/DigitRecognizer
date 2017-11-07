@@ -12,6 +12,9 @@ ApplicationWindow {
     id: window
     title: qsTr("BrabeNetz - Digit Recognizer")
 
+    // Variables
+    property var stateFile : ""
+
     // File picker for state.nn
     FileDialog {
         id: fileDialog
@@ -19,7 +22,12 @@ ApplicationWindow {
         nameFilters: [ "BrabeNetz Network State (*.nn)" ]
         folder: shortcuts.home
         onAccepted: {
-            console.log("You chose: " + fileDialog.fileUrls)
+            console.log(fileDialog.fileUrls)
+            stateFile = fileDialog.fileUrl
+            split = stateFile.toString().split(".")
+            shortName = split[split.length]
+            // TODO: READ TOPOLOGY
+            headerLabel.text = "BrabeNetz - Digit Recognizer on " + stateFile + ": {x}"
         }
         onRejected: {
             console.log("Canceled")
@@ -35,6 +43,7 @@ ApplicationWindow {
                 onClicked: Qt.openUrlExternally("http://github.com/mrousavy/BrabeNetz")
             }
             Label {
+                id: headerLabel
                 text: "BrabeNetz - Digit Recognizer on state.nn: {784,500,100,10}"
                 elide: Label.ElideRight
                 horizontalAlignment: Qt.AlignHCenter
