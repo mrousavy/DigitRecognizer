@@ -83,6 +83,10 @@ ApplicationWindow {
                 canvas.lastX = mouseX
                 canvas.lastY = mouseY
             }
+
+            onPositionChanged: {
+                canvas.requestPaint()
+            }
         }
     }
 }
