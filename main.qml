@@ -60,10 +60,29 @@ ApplicationWindow {
     Canvas {
         id: canvas
         anchors.fill: parent
+        property int lastX: 0
+        property int lastY: 0
+
         onPaint: {
-            var ctx = getContext("2d");
-            ctx.fillStyle = Qt.rgba(1, 0, 0, 1);
-            ctx.fillRect(0, 0, 50, 50);
+            var ctx = getContext("2d")
+            ctx.lineWidth = 2
+            ctx.strokeStyle = color.red
+            ctx.beginPath()
+            ctx.moveTo(lastX, lastY)
+            lastX = area.mouseX
+            lastY = area.mouseY
+            ctx.lineTo(lastX, lastY)
+            ctx.stroke()
+        }
+
+
+        MouseArea {
+            id: area
+            anchors.fill: parent
+            onPressed: {
+                canvas.lastX = mouseX
+                canvas.lastY = mouseY
+            }
         }
     }
 }
