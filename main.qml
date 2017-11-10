@@ -13,7 +13,7 @@ ApplicationWindow {
     title: qsTr("BrabeNetz - Digit Recognizer")
 
     // Variables
-    property var stateFile : ""
+    property string stateFile : ""
 
     // File picker for state.nn
     FileDialog {
@@ -65,7 +65,7 @@ ApplicationWindow {
 
         onPaint: {
             var ctx = getContext("2d")
-            ctx.lineWidth = 2
+            ctx.lineWidth = 5
             ctx.strokeStyle = color.red
             ctx.beginPath()
             ctx.moveTo(lastX, lastY)
